@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: revpay
+    volumes:
+      - ./data:/var/lib/postgresql/data

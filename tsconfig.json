@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "lib": ["ES2023"],
+    "module": "node16",
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "strict": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "inlineSources": false,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["environment.d.ts"],
+  "exclude": ["node_modules"]
+}
