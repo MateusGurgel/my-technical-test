@@ -11,9 +11,9 @@ export class WalletRepository {
 
     const wallet = await this.db.insert(walletTable).values({ balance: 0 }).returning();
 
-    const walletDomin = WalletMapper.toDomain(wallet[0]);
+    const walletDomain = WalletMapper.toDomain(wallet[0]);
 
-    return walletDomin;
+    return walletDomain;
   }
 
   async findWalletById(walletId: number) {

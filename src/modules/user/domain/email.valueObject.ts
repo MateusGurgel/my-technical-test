@@ -1,4 +1,5 @@
 import { ValueObject } from "../../../lib/domain/valueObject";
+import { InvalidEmailError } from "./user.errors";
 
 export class Email extends ValueObject<string> {
     private constructor(email: string) {
@@ -9,8 +10,12 @@ export class Email extends ValueObject<string> {
         return new Email(email);
     }
 
-    public static validate(email: string): boolean {
+    public validate() {
         const emailValidation = /\S+@\S+\.\S+/;
-        return emailValidation.test(email);
+
+        if (!emailValidation.test(this.values)){
+            throw new InvalidEmailError();
+        }
+
     }
 }

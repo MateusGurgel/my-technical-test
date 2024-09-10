@@ -1,5 +1,5 @@
 import { Email } from "./email.valueObject";
-import { Password } from "./password.valueObject copy";
+import { Password } from "./password.valueObject";
 
 
 export class User{

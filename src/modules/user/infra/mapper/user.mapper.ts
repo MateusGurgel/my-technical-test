@@ -1,5 +1,5 @@
 import { Email } from "../../domain/email.valueObject";
-import { Password } from "../../domain/password.valueObject copy";
+import { Password } from "../../domain/password.valueObject";
 import { User } from "../../domain/user.domain"
 import { UserModel } from "../../domain/user.model";
 

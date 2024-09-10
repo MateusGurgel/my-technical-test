@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, InferInsertModel } from "drizzle-orm";
 
 import { userTable } from "../../../../infra/database/schema";
 import { UserMapper } from "../mapper/user.mapper";
@@ -16,6 +16,17 @@ export class UserRepository {
     if (user.length <= 0) {
       return null;
     }
+
+    const userDomain = UserMapper.toDomain(user[0]);
+
+    return userDomain;
+  }
+
+  async createUser(input: InferInsertModel<typeof userTable>){
+    const user = await this.db
+      .insert(userTable)
+      .values(input)
+      .returning();
 
     const userDomain = UserMapper.toDomain(user[0]);
 

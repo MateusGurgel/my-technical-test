@@ -1,4 +1,5 @@
 import { ValueObject } from "../../../lib/domain/valueObject";
+import { InvalidPasswordError } from "./user.errors";
 
 export class Password extends ValueObject<string> {
     private constructor(password: string) {
@@ -9,9 +10,13 @@ export class Password extends ValueObject<string> {
         return new Password(password);
     }
 
-    public static validate(password: string): boolean {
+    public validate() {
         // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
         const passwordValidation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-        return passwordValidation.test(password);
+
+        if(!passwordValidation.test(this.values)){
+            throw new InvalidPasswordError()
+        }
+
     }
 }
