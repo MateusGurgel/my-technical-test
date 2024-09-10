@@ -23,6 +23,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["environment.d.ts"],
   "exclude": ["node_modules"]
 }

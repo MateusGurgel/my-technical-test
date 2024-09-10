@@ -1,3 +1,4 @@
+import { integer } from "drizzle-orm/pg-core"
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core"
 import { serial } from "drizzle-orm/pg-core"
 
@@ -17,7 +18,7 @@ export const userTable = pgTable("users", {
 
 export const walletTable = pgTable("wallets", {
     ...baseColumns,
-    balance: varchar("balance", {length: 255}).notNull(),
+    balance: integer("balance").notNull().default(0),
 })
 
 export const shopkeeperTable = pgTable("shopkeepers", {
