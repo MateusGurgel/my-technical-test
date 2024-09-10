@@ -23,6 +23,23 @@ export class ResellerRepository {
 
   }
 
+  async findResellerById(resellerId: number) {
+    const reseller = await this.db
+      .select()
+      .from(resellerTable)
+      .where(eq(resellerTable.id, resellerId));
+
+    if (reseller.length <= 0) {
+      return null;
+    }
+
+    const resellerDomain = ResellerMapper.toDomain(reseller[0]);
+
+    return resellerDomain;
+
+  }
+
+
   async createReseller(reseller: InferInsertModel<typeof resellerTable>) {
     const resellerCreated = await this.db.insert(resellerTable).values(reseller).returning();
 

@@ -11,4 +11,12 @@ export class Reseller {
   get id() {
     return this._id;
   }
+  
+  get walletId() {
+    return this._walletId;
+  }
+
+  get userId() {
+    return this._userId;
+  }
 }

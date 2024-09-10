@@ -1,9 +1,9 @@
 import { Wallet } from "@/modules/wallet/domain/wallet.domain";
 
-export interface CreateWalletInput {
+export interface GetWalletInput {
     walletId: number;
 }
 
-export interface CreateWalletOutput {
+export interface GetWalletOutput {
     wallet: Wallet
 }

@@ -32,4 +32,19 @@ export class UserRepository {
 
     return userDomain;
   }
+
+  async findUserById(userId: number) {
+    const user = await this.db
+      .select()
+      .from(userTable)
+      .where(eq(userTable.id, userId));
+
+    if (user.length <= 0) {
+      return null;
+    }
+
+    const userDomain = UserMapper.toDomain(user[0]);
+
+    return userDomain;
+  }
 }
