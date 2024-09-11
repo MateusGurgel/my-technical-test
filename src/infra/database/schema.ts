@@ -35,10 +35,10 @@ export const resellerTable = pgTable("resellers", {
     cpf: varchar("cpf", {length: 255}).notNull().unique(),
 })
 
-export const transaction = pgTable("transactions", {
+export const transactionTable = pgTable("transactions", {
     ...baseColumns,
     reciverId: serial("reciver_id").notNull().references(() => shopkeeperTable.id),
     senderId: serial("sender_id").notNull().references(() => resellerTable.id),
-    value: varchar("value", {length: 255}).notNull(),
+    value: integer("value").notNull(),
     type: varchar("type", {length: 255}).notNull(),
 })
