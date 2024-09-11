@@ -28,8 +28,8 @@ export class LoginCommand implements Command<LoginInput, LoginOutput> {
       parsedPassword.iterations,
       parsedPassword.salt
     );
-
-    if (Cryptography.compareString(encryptedPassword, user.password.values)) {
+    
+    if (!Cryptography.compareString(encryptedPassword, user.password.values)) {
       throw new InvalidCredentials();
     }
 

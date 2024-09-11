@@ -11,10 +11,8 @@ export class Password extends ValueObject<string> {
     }
 
     public validate() {
-        // Minimum eight characters, at least one uppercase letter, one lowercase letter and one number
-        const passwordValidation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
-        if(!passwordValidation.test(this.values)){
+        if(this.values.length <= 8){
             throw new InvalidPasswordError()
         }
 

@@ -33,6 +33,7 @@ export class UserRepository {
     return userDomain;
   }
 
+  //This should be cached
   async findUserById(userId: number) {
     const user = await this.db
       .select()

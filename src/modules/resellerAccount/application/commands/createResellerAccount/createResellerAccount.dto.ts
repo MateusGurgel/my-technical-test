@@ -3,5 +3,7 @@ import { CreateUserInput } from "@/modules/user/aplication/commands/createUser/c
 import { GetWalletInput } from "@/modules/wallet/aplication/commands/getWallet/getWallet.dto";
 
 export interface CreateResellerAccountInput extends CreateUserInput, CreateResellerInput, GetWalletInput {
+    userId: any,
+    walletId: any,
 }
 

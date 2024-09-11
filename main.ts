@@ -7,6 +7,7 @@ import * as http from 'node:http';
 import {Request, Response} from 'express';
 import { loginController } from "./src/modules/user/presentation/controllers/login"
 import dotenv from 'dotenv';
+import { signUpController } from '@/modules/resellerAccount/presentation/controllers/signUp';
 
 dotenv.config();
 
@@ -37,8 +38,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 
-app.post('/api', async (req: Request, res: Response) => {
+app.post('/login', async (req: Request, res: Response) => {
     const response = await loginController.handle({body: req.body});
+    res.status(response.statusCode).json(response.body);
+})
+
+app.post('/singUp', async (req: Request, res: Response) => {
+    const response = await signUpController.handle({body: req.body});
     res.status(response.statusCode).json(response.body);
 })
 
