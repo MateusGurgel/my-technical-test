@@ -27,12 +27,7 @@ export class SignUpResellerAccountController implements Controller<ResellerAccou
             throw new HttpError(400, "Invalid name");
         }
 
-        try {
-            await this.signUpCommand.handler({ cpf, email, name, password });
-        } catch (error) {
-            console.error(error);
-            throw new HttpError(500, "Internal server error");
-        }
+        await this.signUpCommand.handler({ cpf, email, name, password });
 
         return { body: {}, statusCode: 200, contentType: 'json' };
     }

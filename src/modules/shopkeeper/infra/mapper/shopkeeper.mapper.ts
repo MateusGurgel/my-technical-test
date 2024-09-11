@@ -7,6 +7,6 @@ export class ShopkeeperMapper{
 
         const cnpj = CNPJ.create(model.cnpj);
 
-        return new Shopkeeper(model.id, model.userId, model.walletId, cnpj);
+        return new Shopkeeper(model.id, model.walletId, model.userId, cnpj);
     }
 }

@@ -27,12 +27,7 @@ export class SignUpShopkeeperAccountController implements Controller<SignUpShopk
             throw new HttpError(400, "Invalid name");
         }
 
-        try {
-            await this.signUpShopkeeperAccountCommand.handler({ cnpj: cnpj, email, name, password });
-        } catch (error) {
-            console.error(error);
-            throw new HttpError(500, "Internal server error");
-        }
+        await this.signUpShopkeeperAccountCommand.handler({ cnpj: cnpj, email, name, password });
 
         return { body: {}, statusCode: 200, contentType: 'json' };
     }

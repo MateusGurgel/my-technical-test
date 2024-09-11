@@ -16,6 +16,15 @@ export class WalletRepository {
     return walletDomain;
   }
 
+  async updateBalance(walletId: number, balance: number) {
+    const wallet = await this.db
+      .update(walletTable)
+      .set({ balance })
+      .where(eq(walletTable.id, walletId))
+      .returning();
+
+  }
+
   async findWalletById(walletId: number) {
     const wallet = await this.db
       .select()

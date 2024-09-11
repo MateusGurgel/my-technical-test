@@ -4,9 +4,12 @@ import { Wallet } from "@/modules/wallet/domain/wallet.domain";
 
 export class ShopkeeperAccount {
   constructor(
-    private user: User,
-    private shopkeeper: Shopkeeper,
-    private wallet: Wallet
+    private _user: User,
+    private _shopkeeper: Shopkeeper,
+    private _wallet: Wallet
   ) {}
-  
+
+  get wallet(){
+    return this._wallet;
+  } 
 }

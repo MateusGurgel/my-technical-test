@@ -4,9 +4,20 @@ import { Wallet } from "@/modules/wallet/domain/wallet.domain";
 
 export class ResellerAccount {
   constructor(
-    private user: User,
-    private reseller: Reseller,
-    private wallet: Wallet
-  ) {}
-  
+    private _user: User,
+    private _reseller: Reseller,
+    private _wallet: Wallet
+  ) {}  
+
+  get reseller(): Reseller {
+    return this._reseller;
+  }
+
+  get wallet(): Wallet {
+    return this._wallet;
+  }
+
+  get user(): User {
+    return this._user;
+  }
 }

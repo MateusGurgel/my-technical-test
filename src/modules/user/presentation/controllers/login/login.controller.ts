@@ -21,13 +21,7 @@ export class LoginController implements Controller<LoginInput, LoginOutput> {
 
         let response
 
-        try {
-            response = await this.loginCommand.handler({email: httpRequest.body.email, password: httpRequest.body.password});
-        }
-        catch(error){
-            console.log(error)
-            throw new HttpError(500, "Internal server error");
-        }
+        response = await this.loginCommand.handler({email: httpRequest.body.email, password: httpRequest.body.password});
 
         return {body: {token: response.token}, statusCode: 200, contentType: 'json'};
     }

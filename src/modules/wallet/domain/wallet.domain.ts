@@ -4,4 +4,8 @@ export class Wallet {
   get id(): number {
     return this._id;
   }
+
+  get balance(): number {
+    return this._balance;
+  }
 }
