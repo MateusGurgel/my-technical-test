@@ -9,7 +9,14 @@ export interface ParsedEncryptedData {
 
 export namespace Cryptography {
     export function compareString(a: string, b: string): boolean {
-        return timingSafeEqual(Buffer.from(a), Buffer.from(b))
+        const bufferA = Buffer.from(a);
+        const bufferB = Buffer.from(b);
+
+    if (bufferA.length !== bufferB.length) {
+        return false;
+    }
+
+    return timingSafeEqual(bufferA, bufferB);
     }
 
     export function encrypt(data: string, pepper: string, iterations: number = 10000, salt?: string): string {
