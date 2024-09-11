@@ -1,13 +1,13 @@
 import { Controller, HttpError, HttpRequest, HttpResponse } from "@/lib/presentation/controller";
-import { SignUpInput } from "./signUp.controller.dto";   
-import { SignUpCommand } from "@/modules/resellerAccount/application/commands/signUp/signUp.command";
+import { ResellerAccountSignUpInput } from "./signUpResellerAccount.controller.dto";   
+import { SignUpResellerAccountCommand } from "@/modules/resellerAccount/application/commands/signUpResellerAccount/signUpResellerAccount.command";
 
 
-export class SignUpController implements Controller<SignUpInput, {}> {
+export class SignUpResellerAccountController implements Controller<ResellerAccountSignUpInput, {}> {
 
-    constructor(private readonly signUpCommand: SignUpCommand) {}
+    constructor(private readonly signUpCommand: SignUpResellerAccountCommand) {}
 
-    async handle(httpRequest: HttpRequest<SignUpInput>): Promise<HttpResponse<{}>> {
+    async handle(httpRequest: HttpRequest<ResellerAccountSignUpInput>): Promise<HttpResponse<{}>> {
 
         const { email, password, cpf, name } = httpRequest.body;
 

@@ -7,7 +7,8 @@ import * as http from 'node:http';
 import {Request, Response} from 'express';
 import { loginController } from "./src/modules/user/presentation/controllers/login"
 import dotenv from 'dotenv';
-import { signUpController } from '@/modules/resellerAccount/presentation/controllers/signUp';
+import { signUpResellerAccountController } from '@/modules/resellerAccount/presentation/controllers/signUpResellerAccount';
+import { signUpShopkeeperAccountController } from '@/modules/shopkeeperAccount/presentation/controllers/signUpShopkeeperAccount';
 
 dotenv.config();
 
@@ -43,8 +44,13 @@ app.post('/login', async (req: Request, res: Response) => {
     res.status(response.statusCode).json(response.body);
 })
 
-app.post('/singUp', async (req: Request, res: Response) => {
-    const response = await signUpController.handle({body: req.body});
+app.post('/resellers/singUp', async (req: Request, res: Response) => {
+    const response = await signUpResellerAccountController.handle({body: req.body});
+    res.status(response.statusCode).json(response.body);
+})
+
+app.post('/shopkeepers/singUp', async (req: Request, res: Response) => {
+    const response = await signUpShopkeeperAccountController.handle({body: req.body});
     res.status(response.statusCode).json(response.body);
 })
 

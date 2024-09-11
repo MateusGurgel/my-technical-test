@@ -1,15 +1,15 @@
 import { Command } from "@/lib/aplication/command";
-import { SignUpInput } from "./signUp.dto";
+import { SignUpResellerAccountInput } from "./signUpResellerAccount.dto";
 import { CreateResellerAccountCommand } from "../createResellerAccount/createResellerAccount.command";
 
-export class SignUpCommand
-  implements Command<SignUpInput, void>
+export class SignUpResellerAccountCommand
+  implements Command<SignUpResellerAccountInput, void>
 {
   constructor(
     private readonly createResellerAccountCommand: CreateResellerAccountCommand
   ) {}
 
-  public async handler(input: SignUpInput) {
+  public async handler(input: SignUpResellerAccountInput) {
 
     await this.createResellerAccountCommand.handler({
       cpf: input.cpf,
